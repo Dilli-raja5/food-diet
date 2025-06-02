@@ -4,8 +4,10 @@ import Snackbar from "@mui/material/Snackbar";
 import Alert from "@mui/material/Alert";
 import VisibilityIcon from "@mui/icons-material/Visibility";
 import VisibilityOffIcon from "@mui/icons-material/VisibilityOff";
+import { useNavigate } from "react-router-dom";
 
 const Register = () => {
+    const navigate = useNavigate();
     const [snackbarOpen, setSnackbarOpen] = useState(false);
     const [snackbarMessage, setSnackbarMessage] = useState("");
     const [snackbarSeverity, setSnackbarSeverity] = useState("success");
@@ -59,6 +61,10 @@ const Register = () => {
                 allergies: ""
             });
             setErrors({});
+     
+             setTimeout(() => {
+                   navigate("/login");
+          }, 2000);
         } catch (err) {
             console.error("Registration failed:", err);
             setSnackbarSeverity("error");
@@ -76,10 +82,10 @@ const Register = () => {
     };
 
     return (
-        <div className="flex flex-col items-center justify-center  bg-white">
+        <div className="flex flex-col items-center justify-center  bg-white m-2">
             <h2 className="text-2xl font-semibold mb-6 text-center text-title">Register</h2>
 
-            <form className="w-full max-w-md mb-2" onSubmit={handleSubmit}>
+            <form className="w-full max-w-sm mb-2" onSubmit={handleSubmit}>
                 {[
                     { label: "Name", name: "name", type: "text" },
                     { label: "Email", name: "email", type: "email" },
@@ -87,19 +93,19 @@ const Register = () => {
                     { label: "Dietary Preferences", name: "dietaryPreferences", type: "text" },
                     { label: "Allergies", name: "allergies", type: "text" }
                 ].map(({ label, name, type }) => (
-                    <div className="mb-4" key={name}>
-                        <div className="h-12 mb-2">
+                    <div className="mb-3" key={name}>
+                       
                             <input
                                 type={type}
                                 name={name}
                                 placeholder={label}
                                 value={form[name]}
                                 onChange={handleChange}
-                                className="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-1 focus:ring-[#4D44B5]"
+                                className="w-full p-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-1 focus:ring-[#4D44B5]"
                                 required={name !== "dietaryPreferences" && name !== "allergies"}
                             />
                             {errors[name] && <p className="text-red-500 text-sm">{errors[name]}</p>}
-                        </div>
+                      
                     </div>
                 ))}
 
@@ -110,7 +116,7 @@ const Register = () => {
                         placeholder="Password"
                         value={form.password}
                         onChange={handleChange}
-                        className="w-full mb-2 p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-1 focus:ring-[#4D44B5]"
+                        className="w-full p-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-1 focus:ring-[#4D44B5]"
                         required
                     />
                     <div
@@ -126,8 +132,8 @@ const Register = () => {
                     {errors.password && <p className="text-red-500 text-sm">{errors.password}</p>}
                 </div>
 
-                <div className="h-10 my-2">
-                    <div className="my-6 flex justify-center">
+            
+                    <div className="my-2 flex justify-center">
                         <button
                             type="submit"
                             className="w-1/2 my-2 bg-green-600 text-white p-3 rounded-lg transition-colors duration-200"
@@ -135,7 +141,7 @@ const Register = () => {
                             Register
                         </button>
                     </div>
-                </div>
+             
             </form>
 
             <p >

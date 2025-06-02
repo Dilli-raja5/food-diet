@@ -98,77 +98,80 @@ const Login = () => {
         <>
             <div className="flex flex-col items-center justify-center px-2 h-96">
                 <>
-                    <h2 className="text-2xl font-semibold mb-6 text-center text-title">
+
+                    <div className="text-center m-1 mt-3 pt-2">
+                        <p className="text-lg text-gray-600"> Welcome to the Food Research Lab!</p>
+                    </div>
+                    <h2 className="text-2xl font-semibold mb-6 text-center text-gray-600">
                         Login
                     </h2>
 
                     <form className="w-full max-w-md" onSubmit={handleSubmit}>
 
-                        <div className="h-18">
-                            <div className="m-6  flex p-3">
-                                <>
-                                    <div className="bg-green-600 p-6 rounded-l-lg flex items-center justify-center">
-                                        <img
-                                            src="/icons/email.png"
-                                            alt="email"
-                                            className="h-5 w-5"
-                                        />
-                                    </div>
-                                    <input
-                                        type="email"
-                                        name="email"
-                                        placeholder="Email"
-                                        value={form.email}
-                                        onChange={handleChange}
-                                        className={`w-full  m-4 p-6 border-t border-r border-b outline-none ${errors.email ? "border-red-500" : "border-gray-300"
-                                            } rounded-r-lg focus:outline-none focus:ring-1 focus:ring-[#4D44B5]`}
-                                        required
-                                    />
-                                </>
-                            </div>
-                            {errors.email && (
-                                <p className="text-red-500 text-sm mb-4">{errors.email}</p>
-                            )}
-                        </div>
 
-                        <div className="h-18">
-                            <div className="mb-4 flex relative">
+                        <div className="mb-4  flex ">
+                            <>
                                 <div className="bg-green-600 p-3 rounded-l-lg flex items-center justify-center">
                                     <img
-                                        src="/icons/password.png"
-                                        alt="password"
-                                        className="h-6 w-6 p-3"
+                                        src="/icons/email.png"
+                                        alt="email"
+                                        className="h-5 w-5"
                                     />
                                 </div>
                                 <input
-                                    type={showPassword ? "password" : "text"}
-                                    name="password"
-                                    placeholder="Password"
-                                    value={form.password}
+                                    type="email"
+                                    name="email"
+                                    placeholder="Email"
+                                    value={form.email}
                                     onChange={handleChange}
-                                    className={`w-full p-3 border-t border-r border-b outline-none ${errors.password ? "border-red-500" : "border-gray-300"
-                                        } rounded-r-lg focus:outline-none focus:ring-1 focus:ring-[#4D44B5] box-border`}
+                                    className={`w-full p-3 border-t border-r border-b outline-none ${errors.email ? "border-red-500" : "border-gray-300"
+                                        } rounded-r-lg focus:outline-none focus:ring-1 focus:ring-[#4D44B5]`}
                                     required
                                 />
-                                {/* Eye Icon */}
-                                <div
-                                    className="absolute right-3 top-1/2 transform -translate-y-1/2 cursor-pointer"
-                                    onClick={togglePasswordVisibility}
-                                >
-                                    {showPassword ? (
-                                        <VisibilityOffIcon className="text-gray-500" />
-                                    ) : (
-                                        <VisibilityIcon className="text-gray-500" />
-                                    )}
-                                </div>
-                            </div>
+                            </>
+                        </div>
+                        {errors.email && (
+                            <p className="text-red-500 text-sm mb-4">{errors.email}</p>
+                        )}
 
-                            {errors.password && (
-                                <p className="text-red-500 text-sm mb-4">{errors.password}</p>
-                            )}
+
+                        <div className="mb-4 flex relative">
+                            <div className="bg-green-600 p-3 rounded-l-lg flex items-center justify-center">
+                                <img
+                                    src="/icons/password.png"
+                                    alt="password"
+                                    className="h-5 w-5"
+                                />
+                            </div>
+                            <input
+                                type={showPassword ? "password" : "text"}
+                                name="password"
+                                placeholder="Password"
+                                value={form.password}
+                                onChange={handleChange}
+                                className={`w-full p-3 border-t border-r border-b outline-none ${errors.password ? "border-red-500" : "border-gray-300"
+                                    } rounded-r-lg focus:outline-none focus:ring-1 focus:ring-[#4D44B5] box-border`}
+                                required
+                            />
+                            {/* Eye Icon */}
+                            <div
+                                className="absolute right-3 top-1/2 transform -translate-y-1/2 cursor-pointer"
+                                onClick={togglePasswordVisibility}
+                            >
+                                {showPassword ? (
+                                    <VisibilityOffIcon className="text-gray-500" />
+                                ) : (
+                                    <VisibilityIcon className="text-gray-500" />
+                                )}
+                            </div>
                         </div>
 
-                        <div className="mb-6 flex justify-center">
+                        {errors.password && (
+                            <p className="text-red-500 text-sm mb-4">{errors.password}</p>
+                        )}
+
+
+                        <div className="mb-4 flex justify-center">
                             <button
                                 type="submit"
                                 className="w-1/3 bg-green-600 text-white p-3 rounded-lg transition-colors duration-200 cursor-pointer"
@@ -178,7 +181,7 @@ const Login = () => {
                         </div>
                     </form>
 
-                    <div className="mt-6">
+                    <div className="mt-2">
                         <Link to="/register" className="text-blue-500 underline">
                             Resister
                         </Link>
@@ -191,7 +194,7 @@ const Login = () => {
                     autoHideDuration={6000}
                     onClose={handleSnackbarClose}
                 >
-                    <Alert onClose={handleSnackbarClose} severity={snackbarSeverity}>
+                    <Alert onClose={handleSnackbarClose} severity={snackbarSeverity} variant="filled">
                         {snackbarMessage}
                     </Alert>
                 </Snackbar>

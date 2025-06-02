@@ -11,10 +11,13 @@ import { useAuth } from './context/AuthContext';
 import NotAuthorized from './components/NotAuthorised';
 import Register from './components/Register';
 import DietitianDashboard from './pages/DietitianDashbord/Dashbord';
+import Profile from './pages/DietitianDashbord/Profile';
+import UploadedPlans from './pages/DietitianDashbord/Uploaddiet';
 
 function App() {
   const [count, setCount] = useState(0)
-  const {user} = useAuth();
+  // const {user} = useAuth();
+  const user = {role:"admin"}
 
 
   const roleRoutes = () => {
@@ -24,7 +27,9 @@ function App() {
           {/*admin-specific routes */}
           <Route index element={<DietitianDashboard/>} />
           <Route path="dietition-home" element={<DietitianDashboard/>} />
-          <Route path="create-school-lead" element={<CreateSchoolLead />} />
+          <Route path="upload-diet" element={<UploadedPlans/>} />
+          <Route path="profile" element={<Profile/>} />
+          {/* <Route path="create-school-lead" element={<CreateSchoolLead />} /> */}
           
         </>
       );
@@ -51,12 +56,21 @@ function App() {
           <Route path="/register" element={<Register/>} />
         </Route>
         {/* Protected Routes */}
-        <Route
+        {/* <Route
           path="/home"
           element={
             <PrivateRoute>
               <Home/>
             </PrivateRoute>
+          }
+        >
+          {roleRoutes()}
+        </Route> */}
+        <Route
+          path="/home"
+          element={
+              <Home/>
+            
           }
         >
           {roleRoutes()}

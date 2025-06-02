@@ -15,7 +15,7 @@ export default function TopNav() {
   };
 
   return (
-    <section className="h-[10vh] w-full px-2 bg-page-bg lg:p-2 flex justify-between items-center">
+    <section className="h-[10vh] w-full px-2 bg-gray-700 lg:p-2 flex justify-between items-center">
       {/* Logo Section */}
       <Link
         to={"/home/view-leads"}
@@ -23,11 +23,12 @@ export default function TopNav() {
       >
         <div className="w-[15vw] lg:w-[10vw] h-auto flex items-center">
           <img
-            className="object-contain w-full h-full"
+            className="object-contain  h-10 w-10 "
             src="/icons/medical.png"
             alt="logo"
           />
         </div>
+         <p className="text-lg text-white"> Welcome to the Food Research Lab!</p>
       </Link>
       {/* Logout Section */}
       <Link
